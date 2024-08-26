@@ -1,7 +1,7 @@
 #[derive(Debug)]
 pub struct TSData {
-    tss: Vec<usize>,
-    vals: Vec<Option<f64>>,
+    _tss: Vec<usize>,
+    _vals: Vec<Option<f64>>,
 }
 
 impl FromIterator<(usize, Option<f64>)> for TSData {
@@ -13,12 +13,15 @@ impl FromIterator<(usize, Option<f64>)> for TSData {
         let tss = items.iter().map(|&a| a.0).collect();
         let vals = items.iter().map(|&a| a.1).collect();
 
-        return TSData { tss, vals };
+        return TSData {
+            _tss: tss,
+            _vals: vals,
+        };
     }
 }
 
 impl TSData {
-    fn from_iters<T: IntoIterator<Item = usize>, S: IntoIterator<Item = Option<f64>>>(
+    pub fn from_iters<T: IntoIterator<Item = usize>, S: IntoIterator<Item = Option<f64>>>(
         ts_iter: T,
         val_iter: S,
     ) -> Result<Self, &'static str> {
@@ -29,7 +32,10 @@ impl TSData {
             return Err("ts and val counts don't match");
         }
 
-        return Ok(TSData { tss, vals });
+        return Ok(TSData {
+            _tss: tss,
+            _vals: vals,
+        });
     }
 }
 
@@ -47,9 +53,9 @@ mod tests {
         ];
         let ts_data = TSData::from_iter(data);
 
-        assert_eq!(ts_data.tss, [1, 2, 3, 6]);
+        assert_eq!(ts_data._tss, [1, 2, 3, 6]);
         assert_eq!(
-            ts_data.vals,
+            ts_data._vals,
             [Some(12.0), Some(19.2), Some(2.1), Some(10.0)]
         );
     }
