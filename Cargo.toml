@@ -1,4 +1,4 @@
 [workspace]
 
-members = ["ralarm"]
+members = ["ralarm", "ralarm-cw"]
 resolver = "2"
