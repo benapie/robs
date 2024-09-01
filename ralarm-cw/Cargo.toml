@@ -5,6 +5,6 @@ edition = "2021"
 
 [dependencies]
 ralarm = { path = "../ralarm" }
-
-[dev-dependencies]
 tokio = { version = "1.39.3", features = ["full"] }
+aws-config = { version = "1.1.7", features = ["behavior-version-latest"] }
+aws-sdk-cloudwatch = "1.45.0"

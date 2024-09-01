@@ -1,4 +1,4 @@
-use crate::{Alarm, AlarmState, EvictingQue};
+use ralarm::{utils::EvictingQue, Alarm, AlarmState};
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum TreatMissingData {
